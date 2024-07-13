@@ -1,0 +1,15 @@
+services:
+    _defaults:
+        autowire: true
+        tags:
+            - kernel.event_subscriber
+
+    Hustle\Http\Presentation\Event\Subscriber\JsonToArrayConverterSubscriber: ~
+    Hustle\Http\Presentation\Event\Subscriber\KernelExceptionSubscriber:
+        arguments:
+            $serviceName: '%env(APP_SERVICE_NAME)%'
+            $serviceVersion: '%env(APP_VERSION)%'
+    Hustle\Http\Presentation\Event\Subscriber\KernelResponseSubscriber:
+        arguments:
+            $serviceName: '%env(APP_SERVICE_NAME)%'
+            $serviceVersion: '%env(APP_VERSION)%'

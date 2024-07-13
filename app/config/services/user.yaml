@@ -1,0 +1,9 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    App\User\:
+        resource: '../../src/User'
+        exclude: '../../src/User/Model/{DTO,Form,Entity,Enum}'

@@ -1,0 +1,10 @@
+doctrine:
+    dbal:
+        connections:
+            default:
+                driver: pdo_pgsql
+                charset: utf8
+                default_table_options:
+                    charset: utf8
+                    collate: utf8_unicode_ci
+                url: '%env(DATABASE_URL)%'

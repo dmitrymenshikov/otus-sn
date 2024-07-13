@@ -1,0 +1,23 @@
+{
+  "name": "hustle/lib-http",
+  "version": "1.0.0",
+  "description": "HTTP",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Dmitry Menshikov",
+      "email": "dmitrymenshikov@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=8.2",
+    "symfony/http-foundation": "^7.0",
+    "symfony/http-kernel": "^7.0"
+  },
+  "license": "proprietary",
+  "autoload": {
+    "psr-4": {
+      "Hustle\\Http\\": "src"
+    }
+  }
+}
