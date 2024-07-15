@@ -1,0 +1,190 @@
+{
+	"info": {
+		"_postman_id": "df927ff7-7678-41d4-9346-1fdb75374fe5",
+		"name": "OTUS sn",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6968059"
+	},
+	"item": [
+		{
+			"name": "User register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept-Encoding",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"test@test.com\",\n    \"password\": \"1234\",\n    \"firstname\": \"1234\",\n    \"lastname\": \"1234\",\n    \"birthday\": \"31.05.1991\",\n    \"gender\": 1,\n    \"city\": ,\n    \"about\": \"туда-сюда\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8051/user/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8051",
+					"path": [
+						"user",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User get",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "df9614a82bf61d4b84eb3f5d8622070f",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept-Encoding",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8051/user/get/0190a2f0-a282-7f18-a66b-c2b2ae32feba",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8051",
+					"path": [
+						"user",
+						"get",
+						"0190a2f0-a282-7f18-a66b-c2b2ae32feba"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get cities list",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept-Encoding",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8051/cities/get/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8051",
+					"path": [
+						"cities",
+						"get",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"test@test.com\",\n    \"password\": \"1234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8051/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8051",
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ping",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept-Encoding",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"test@test.com\",\n    \"password\": \"1234\",\n    \"firstname\": \"1234\",\n    \"lastname\": \"1234\",\n    \"birthday\": \"31.05.1991\",\n    \"gender\": 1,\n    \"city\": \"dca5f5b7-8f15-4fd9-bc1f-b5906eeec7d9\",\n    \"about\": \"туда-сюда\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8051/ping",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8051",
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

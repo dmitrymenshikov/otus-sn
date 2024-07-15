@@ -1,0 +1,28 @@
+security:
+    password_hashers:
+        Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
+
+    providers:
+        client:
+            id: App\User\Persistent\Security\UserProvider
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt|error)|css|images|js)/
+            security: false
+        main:
+            pattern: ^/*
+            lazy: false
+            provider: client
+            security: true
+            json_login:
+                check_path: user_login
+                username_path: email
+                password_path: password
+            access_token:
+                token_handler: App\User\Persistent\Security\UserAccessTokenHandler
+
+    access_control:
+        - { path: ^/user/(register|login|logout), roles: PUBLIC_ACCESS }
+        - { path: ^/cities, roles: PUBLIC_ACCESS }
+        - { path: ^/, roles: ROLE_USER }

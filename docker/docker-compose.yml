@@ -1,0 +1,38 @@
+name: otus-social-network
+version: '3.8'
+services:
+
+    php:
+        container_name: sn-php
+        build:
+            context: ./docker/php
+        depends_on:
+            - postgres
+        volumes:
+            - ./docker/php/php.ini:/usr/local/etc/php/php.ini
+            - ../app/:/var/www:rw,delegated
+        extra_hosts:
+            - "host.docker.internal:host-gateway"
+
+    nginx:
+        container_name: sn-nginx
+        build:
+            context: ./docker/nginx
+        ports:
+            - "8051:80"
+        depends_on:
+            - php
+        dns:
+            - 1.1.1.1
+        volumes:
+            - ./docker/logs:/var/log/nginx
+            - ../app/:/var/www:rw,delegated
+
+    postgres:
+        image: postgres:16
+        ports:
+            - "5432:5432"
+        environment:
+            POSTGRES_USER: 'sn'
+            POSTGRES_PASSWORD: 'sn'
+            POSTGRES_DB: 'sn'

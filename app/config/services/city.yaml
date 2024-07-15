@@ -1,0 +1,9 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    App\City\:
+        resource: '../../src/City'
+        exclude: '../../src/City/Model/{DTO,Form,Entity,Enum}'

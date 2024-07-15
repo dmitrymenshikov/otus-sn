@@ -1,0 +1,3 @@
+user:
+    resource: ../../src/User/Presentation
+    type: attribute
