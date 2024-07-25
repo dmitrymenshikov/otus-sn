@@ -22,6 +22,44 @@ class UserRepository extends AbstractBaseRepository
     }
 
     /**
+     * @return User[]|null
+     * @throws Exception
+     */
+    public function findUsersByPartial(string $firstnamePart, string $lastnamePart): ?array
+    {
+        $sql = /** @lang PostgresSQL */
+            'SELECT
+                u.uuid,
+                u.email,
+                u.password,
+                u.firstname,
+                u.lastname,
+                u.birthday,
+                u.gender,
+                c.name as "city",
+                u.about
+            FROM
+               "user" AS u
+            LEFT JOIN
+               cities c on u.city = c.uuid
+            WHERE
+                firstname LIKE :firstname
+            AND
+                lastname LIKE :lastname
+            ;';
+
+        $result = $this->conn->executeQuery($this->sanitizeSql($sql), ['firstname' => $firstnamePart.'%', 'lastname' => $lastnamePart.'%']);
+
+        if ($result->rowCount()) {
+            return array_map(function($userData) {
+                return User::createFromArray(...$userData);
+            }, $result->fetchAllAssociative());
+        }
+
+        return null;
+    }
+
+    /**
      * @throws Exception
      */
     public function getUserByUuid(string $uuid): ?User

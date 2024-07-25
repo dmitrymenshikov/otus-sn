@@ -72,4 +72,15 @@ class UserController extends AbstractBaseController
 
         return $this->createOkResponse(['user' => $user]);
     }
+
+    /**
+     * @throws Exception
+     */
+    #[Route('/search', name: 'search', options: ['type' => 'api'], methods: ['GET'])]
+    public function searchUsers(Request $request, UserRepository $repository): JsonResponse
+    {
+        $users = $repository->findUsersByPartial($request->get('firstname'), $request->get('lastname'));
+
+        return $this->createOkResponse(['users' => $users]);
+    }
 }

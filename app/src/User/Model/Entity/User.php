@@ -22,7 +22,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \JsonSe
         public DateTime $birthday,
         public GenderEnum $gender,
         public string $city,
-        public string $about
+        public ?string $about
     )
     {}
 
@@ -71,7 +71,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \JsonSe
         return $this->city;
     }
 
-    public function getAbout(): string
+    public function getAbout(): ?string
     {
         return $this->about;
     }
@@ -100,7 +100,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, \JsonSe
         string $birthday,
         int $gender,
         string $city,
-        string $about
+        ?string $about
     ): self
     {
         return new self(

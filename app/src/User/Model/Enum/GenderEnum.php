@@ -6,6 +6,6 @@ namespace App\User\Model\Enum;
 
 enum GenderEnum: int
 {
-    case MALE = 1;
-    case FEMALE = 2;
+    case MALE = 0;
+    case FEMALE = 1;
 }
