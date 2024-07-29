@@ -4,7 +4,7 @@ RUN set -ex \
   && apk --no-cache add \
     postgresql-dev
 
-RUN docker-php-ext-install pdo pdo_pgsql
+RUN docker-php-ext-install pdo pdo_pgsql opcache
 
 # Install composer
 COPY --from=composer:2.1 /usr/bin/composer /usr/local/bin/composer
